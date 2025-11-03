@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Digital Guru - Dwi Hastuti Listiyani, S.Si., M.Pd</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons for professional icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc; /* Tailwind: slate-50 */
+        }
+        /* Custom scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94a3b8; /* Tailwind: slate-400 */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748b; /* Tailwind: slate-500 */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary-blue': '#1e3a8a', // Dark Blue
+                        'accent-teal': '#14b8a6', // Teal
+                    }
+                }
+            }
+        }
+
+        // --- JavaScript for Tab Switching and Initialization ---
+
+        // State variable to track the active menu
+        let activeMenu = 'profile';
+
+        /**
+         * Switches the active content tab.
+         * @param {string} menuId - The ID of the menu to switch to ('profile', 'portfolio', 'evidence').
+         */
+        function switchMenu(menuId) {
+            activeMenu = menuId;
+            // Update button styles
+            document.querySelectorAll('.nav-button').forEach(button => {
+                const targetId = button.getAttribute('data-target');
+                if (targetId === menuId) {
+                    button.classList.add('bg-accent-teal', 'text-white', 'shadow-lg');
+                    button.classList.remove('bg-gray-100', 'text-primary-blue', 'hover:bg-gray-200');
+                } else {
+                    button.classList.remove('bg-accent-teal', 'text-white', 'shadow-lg');
+                    button.classList.add('bg-gray-100', 'text-primary-blue', 'hover:bg-gray-200');
+                }
+            });
+
+            // Update content visibility
+            document.querySelectorAll('.content-section').forEach(section => {
+                if (section.id === `content-${menuId}`) {
+                    section.classList.remove('hidden');
+                } else {
+                    section.classList.add('hidden');
+                }
+            });
+        }
+
+        // Initialize the app when the window loads
+        window.onload = function() {
+            switchMenu('profile'); // Set default view to Profil Guru
+            // Replace lucide icons
+            lucide.createIcons();
+        }
+    </script>
+</head>
+<body class="min-h-screen antialiased">
+
+    <!-- Header / Navbar (Sticky for navigation) -->
+    <header class="bg-primary-blue shadow-xl sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row justify-between items-center">
+            <h1 class="text-3xl font-extrabold text-white mb-2 md:mb-0 tracking-wider">
+                <i data-lucide="graduation-cap" class="inline-block w-8 h-8 mr-2 text-accent-teal"></i>
+                Portofolio Guru
+            </h1>
+            <nav class="flex space-x-2 sm:space-x-4">
+                <button class="nav-button p-3 rounded-xl transition duration-300 ease-in-out text-sm sm:text-base font-semibold" data-target="profile" onclick="switchMenu('profile')">
+                    <i data-lucide="user" class="w-5 h-5 inline-block mr-1"></i> Profil Guru
+                </button>
+                <button class="nav-button p-3 rounded-xl transition duration-300 ease-in-out text-sm sm:text-base font-semibold" data-target="portfolio" onclick="switchMenu('portfolio')">
+                    <i data-lucide="briefcase" class="w-5 h-5 inline-block mr-1"></i> Portofolio
+                </button>
+                <button class="nav-button p-3 rounded-xl transition duration-300 ease-in-out text-sm sm:text-base font-semibold" data-target="evidence" onclick="switchMenu('evidence')">
+                    <i data-lucide="check-circle" class="w-5 h-5 inline-block mr-1"></i> Bukti Implementasi
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+
+        <!-- CONTENT SECTION 1: PROFIL GURU -->
+        <section id="content-profile" class="content-section">
+            <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 border-t-8 border-accent-teal">
+                <h2 class="text-4xl font-bold text-primary-blue mb-6 border-b pb-2">Profil Guru</h2>
+
+                <div class="flex flex-col lg:flex-row gap-8">
+                    <!-- Biodata Card -->
+                    <div class="lg:w-1/3 p-6 bg-gray-50 rounded-xl border border-gray-200">
+                        <div class="text-center mb-6">
+                             <!-- Placeholder Image: Replace with actual photo URL -->
+                            <img src="https://live.staticflickr.com/65535/54898819721_f30a858297_m.jpg" width="150" height='150" alt="foto" onerror="this.src='https://live.staticflickr.com/65535/54898819721_f30a858297_m.jpg'" alt="" class="w-40 h-40 object-cover rounded-full mx-auto shadow-md border-4 border-accent-teal">
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-center text-primary-blue">
+                            Dwi Hastuti Listiyani, S.Si., M.Pd
+                        </h3>
+                        <p class="text-lg text-gray-600 text-center mt-2">Pendidik Profesional</p>
+                        <hr class="my-4">
+                        <div class="space-y-3">
+                            <div class="flex items-center text-gray-700">
+                                <i data-lucide="building" class="w-5 h-5 mr-3 text-accent-teal flex-shrink-0"></i>
+                                <span class="font-semibold">Unit Kerja:</span> <span class="ml-2">SMP Negeri 1 Patuk</span>
+                            </div>
+                            <div class="flex items-center text-gray-700">
+                                <i data-lucide="map-pin" class="w-5 h-5 mr-3 text-accent-teal flex-shrink-0"></i>
+                                <span class="font-semibold">Lokasi:</span> <span class="ml-2">Gunungkidul, DI Yogyakarta</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Description and Social Media -->
+                    <div class="lg:w-2/3 space-y-8">
+                        <div>
+                            <h3 class="text-3xl font-semibold text-primary-blue mb-3 flex items-center">
+                                <i data-lucide="pencil-line" class="w-6 h-6 mr-3 text-accent-teal"></i>
+                                Tentang Saya
+                            </h3>
+                            <p class="text-gray-700 leading-relaxed text-lg bg-blue-50 p-4 rounded-lg border-l-4 border-primary-blue">
+                                Saya adalah seorang guru yang bersemangat dalam bidang Matematika dan Pendidikan. Saya berdedikasi untuk menciptakan lingkungan belajar yang inovatif dan inspiratif, serta aktif dalam pengembangan profesionalisme guru melalui berbagai kegiatan.
+                            </p>
+                        </div>
+
+                        <div>
+                            <h3 class="text-3xl font-semibold text-primary-blue mb-3 flex items-center">
+                                <i data-lucide="at-sign" class="w-6 h-6 mr-3 text-accent-teal"></i>
+                                Media Sosial
+                            </h3>
+                            <div class="flex flex-wrap gap-4">
+                                <a href="https://www.facebook.com/dwi.h.listiyani" target="_blank" class="flex items-center space-x-2 bg-indigo-600 text-white px-4 py-2 rounded-full hover:bg-indigo-700 transition duration-300 shadow-md">
+                                    <i data-lucide="facebook" class="w-5 h-5"></i>
+                                    <span>Facebook</span>
+                                </a>
+                                <a href="https://www.instagram.com/@dwi.h.listiyani" target="_blank" class="flex items-center space-x-2 bg-pink-600 text-white px-4 py-2 rounded-full hover:bg-pink-700 transition duration-300 shadow-md">
+                                    <i data-lucide="instagram" class="w-5 h-5"></i>
+                                    <span>Instagram</span>
+                                </a>
+                                <a href="https://www.youtube.com/channel/@dwihastutilistiyani214" target="_blank" class="flex items-center space-x-2 bg-red-600 text-white px-4 py-2 rounded-full hover:bg-red-700 transition duration-300 shadow-md">
+                                    <i data-lucide="youtube" class="w-5 h-5"></i>
+                                    <span>YouTube</span>
+                                </a>
+                                <a href="mailto:dwilistiyani93@guru.smp.belajar.id" class="flex items-center space-x-2 bg-gray-700 text-white px-4 py-2 rounded-full hover:bg-gray-800 transition duration-300 shadow-md">
+                                    <i data-lucide="mail" class="w-5 h-5"></i>
+                                    <span>Email</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT SECTION 2: PORTOFOLIO GURU (Detailed Items) -->
+        <section id="content-portfolio" class="content-section hidden">
+            <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 border-t-8 border-accent-teal space-y-10">
+                <h2 class="text-4xl font-bold text-primary-blue mb-6 border-b pb-2">Portofolio & Riwayat Profesional</h2>
+
+                <!-- Component: Kegiatan Pengembangan Diri -->
+                <div class="border p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-l-orange-500">
+                    <h3 class="text-3xl font-semibold text-orange-600 mb-3 flex items-center">
+                        <i data-lucide="monitor" class="w-6 h-6 mr-3"></i> Kegiatan Pengembangan Diri
+                    </h3>
+                    <ul class="space-y-4 list-disc ml-6 text-gray-700">
+                        <li><span class="font-bold">2025:</span> Pelatihan Teknis Non Gelar Bagi Pendidik dengan tema Empowering Educators with in-Depth Literacy and Numaeracy Skills Through Artificial Intelligence (AI).</li>
+                        <li><span class="font-bold">2025:</span> ToT Fasilitator Pembelajaran Mendalam untuk Guru SMP.</li>
+                        <li><span class="font-bold">2024:</span> Pelatihan Microcredential Numeracy bagi Guru PAUD, SD dan SMP.</li>
+						<li><span class="font-bold">2024:</span> Pelatihan Transformasi Pembelajaran Berbasis Tindakan Reflektif.</li>
+						<li><span class="font-bold">2024:</span> Pembekalan Calon Pengajar Praktik PGP Angkatan 11.</li>
+						<li><span class="font-bold">2024:</span> Bimtek Dosen dan Guru Pamong Penguji UKPPG.</li>
+						<li><span class="font-bold">2023:</span> Pelatihan Blended Integrasi TIK dalam Pembelajaran Matematika .</li>
+						<li><span class="font-bold">2023:</span> Gebrak Kombel-Bimtek Penggerak Komunitas Belajar.</li>
+						<li><span class="font-bold">2023:</span> Pelatihan Penyusunan Instrumen Penelitian UNY.</li>
+						<li><span class="font-bold">2023:</span> Pelatihan Penyusunan Soal ASPD.</li>
+                    </ul>
+                </div>
+
+                <!-- Component: Pendampingan Teman Sejawat -->
+                <div class="border p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-l-green-500">
+                    <h3 class="text-3xl font-semibold text-green-600 mb-3 flex items-center">
+                        <i data-lucide="users" class="w-6 h-6 mr-3"></i> Pendampingan Teman Sejawat
+                    </h3>
+                    <ul class="space-y-4 list-disc ml-6 text-gray-700">
+                        <li>Fasilitator Pembelajaran Mendalam untuk Guru SMP Kelas B Kabupaten Gunungkidul (2025).</li>
+						<li>Fasilitator Upgrading Guru SMP Kabupaten Gunungkidul (2025).</li>
+                        <li>Narasumber Pembelajaran Numerasi SMPN 2 Nglipar (2024).</li>
+                        <li>Pendampingan implementasi Platform Merdeka Mengajar (PMM) bagi 5 rekan guru.</li>
+						<li>Narasumber webinar MGMP Matematika Kabupaten Gunungkidul (2023).</li>
+                    </ul>
+                </div>
+
+                <!-- Component: Pengalaman Organisasi Profesi -->
+                <div class="border p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-l-purple-500">
+                    <h3 class="text-3xl font-semibold text-purple-600 mb-3 flex items-center">
+                        <i data-lucide="star" class="w-6 h-6 mr-3"></i> Pengalaman Organisasi Profesi
+                    </h3>
+                    <ul class="space-y-4 list-disc ml-6 text-gray-700">
+                        <li><span class="font-bold">Koordinator Kecamatan Patuk:</span> Musyawarah Guru Mata Pelajaran (MGMP) Matematika Kabupaten Gunungkidul (Masa Bakti 2023-2028).</li>
+                        <li><span class="font-bold">Bagian Penelitian dan Pengembangan:</span> Musyawarah Guru Mata Pelajaran (MGMP) Matematika Kabupaten Gunungkidul (Masa Bakti 2020-2024).</li>
+                        <li><span class="font-bold">Pengurus Wilayah DIY:</span> Komunitas Penggerak Numerasi Indonesia (KPNI) (2023-sekarang).</li>
+                    </ul>
+                </div>
+
+                <!-- Component: Karya Tulis dan Inovasi -->
+                <div class="border p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-l-red-500">
+                    <h3 class="text-3xl font-semibold text-red-600 mb-3 flex items-center">
+                        <i data-lucide="book-open" class="w-6 h-6 mr-3"></i> Karya Tulis dan Inovasi
+                    </h3>
+                    <div class="space-y-4 text-gray-700">
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="font-bold">Inovasi: "Penerapan Pembelajaran STEM dalam Pembelajaran Matematika untuk Meningkatkan Kerjasama, Penalaran Kritis, dan Kreativitas Murid di SMP Negeri 1 Patuk" (2025)</p>
+                            <p class="text-sm italic">Inovasi ini bertujuan untuk mengatasi pembelajaran Matematika yang masih teoretis.</p>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="font-bold">Artikel Ilmiah: "Upaya Meningkatkan Keterampilan 4C Siswa Kelas VIII dengan Strategi Gallery Walk dalam Pembelajaran Matematika di SMP Negeri 3 Tepus" (2021)</p>
+                            <p class="text-sm italic">Dipublikasikan di Jurnal Tadris Matematika (JTMT), Vol 2, No 2 2021.</p>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="font-bold">Artikel Ilmiah: "Mengembangkan Financial Literacy Siswa SMP Melalui Pembelajaran Matematika" (2016)</p>
+                            <p class="text-sm italic">Dipresentasikan pada Seminar Pendidikan Matematika SPs UPI 2016 di Bandung.</p>
+						</div>
+                        <div class="bg-red-50 p-3 rounded-lg">
+                            <p class="font-bold">Artikel Ilmiah: "Application of Learning Based Environment Problems using Scientific Method to Improve Students Motivation and Activities on Three Dimensional Shape in SMP Negeri 3 Tepus Yogyakarta" (2015)</p>
+                            <p class="text-sm italic">Dipresentasikan pada Conference of Science and Mathematics Education (COSMED) 2015 di Penang Malaysia.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Component: Prestasi dan Penghargaan -->
+                <div class="border p-6 rounded-xl shadow-lg hover:shadow-xl transition duration-300 border-l-4 border-l-yellow-500">
+                    <h3 class="text-3xl font-semibold text-yellow-600 mb-3 flex items-center">
+                        <i data-lucide="award" class="w-6 h-6 mr-3"></i> Prestasi dan Penghargaan
+                    </h3>
+                    <ul class="space-y-4 list-disc ml-6 text-gray-700">
+                        <li><span class="font-bold">Penghargaan Satyalancana Karya Satya X Tahun (2023)</span></li>
+						<li><span class="font-bold">Penyusun Soal ASPD (2023)</span></li>
+                        <li><span class="font-bold">Juara 2 Forum Ilmiah Guru Kabupaten Gunungkidul (2019).</span></li>
+                        <li><span class="font-bold">Wisudawan Terbaik Prodi Pendidikan Matematika Program Pascasarjana UNY (2017).</span></li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTENT SECTION 3: BUKTI IMPLEMENTASI KARYA INOVASI -->
+        <section id="content-evidence" class="content-section hidden">
+            <div class="bg-white rounded-2xl shadow-2xl p-6 sm:p-10 border-t-8 border-accent-teal space-y-10">
+                <h2 class="text-4xl font-bold text-primary-blue mb-6 border-b pb-2">Bukti Implementasi Karya Inovasi</h2>
+                <p class="text-xl text-gray-600 mb-8">
+                    Dokumentasi dan dampak dari inovasi **"Penerapan Pembelajaran STEM dalam Pembelajaran Matematika untuk Meningkatkan Kerjasama, Penalaran Kritis, dan Kreativitas Murid di SMP Negeri 1 Patuk"** yang telah diterapkan di SMP Negeri 1 Patuk.
+                </p>
+
+                <!-- Inovasi Implementation Card -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Bukti 1: Dokumentasi Penggunaan -->
+                    <div class="border-2 border-dashed border-gray-300 p-5 rounded-xl bg-teal-50 shadow-md">
+                        <h3 class="text-2xl font-semibold text-teal-700 mb-3 flex items-center">
+                            <i data-lucide="tablet" class="w-6 h-6 mr-3"></i> Dokumentasi Penerapan
+                        </h3>
+                        <p class="text-gray-700 mb-4">Murid Menerapkan STEM untuk Memecahkan Masalah.</p>
+                        <!-- Placeholder for a document/image -->
+                        <div class="h-48 bg-gray-200 rounded-lg flex items-center justify-center text-gray-500 font-medium">
+                            
+                        </div>
+                        <a href="https://drive.google.com/file/d/1ZKK7jkxl9Mjnfho172oLRE0ZS8Pwe8re/view?usp=sharing" class="mt-4 block text-center text-primary-blue hover:underline font-medium">Lihat Galeri Foto Lengkap</a>
+                    </div>
+
+                    <!-- Bukti 2: Hasil Kuesioner/Dampak -->
+                    <div class="border-2 border-dashed border-gray-300 p-5 rounded-xl bg-teal-50 shadow-md">
+                        <h3 class="text-2xl font-semibold text-teal-700 mb-3 flex items-center">
+                            <i data-lucide="trending-up" class="w-6 h-6 mr-3"></i> Dampak dan Peningkatan
+                        </h3>
+                        <div class="text-gray-700 space-y-3">
+                            <div class="flex justify-between items-center border-b pb-2">
+                                <span class="font-medium">Peningkatan Kerjasama, Penalaran Kritis, dan Kreativitas Murid:</span>
+                                <span class="text-xl font-bold text-green-600"> +27%</span>
+                            </div>
+                            <div class="flex justify-between items-center border-b pb-2">
+                                <span class="font-medium">Umpan Balik Guru:</span>
+                                <span class="text-sm font-bold text-teal-700"> "Sangat Menginspirasi"</span>
+                            </div>
+                        </div>
+                        <a href="https://drive.google.com/file/d/1ZKK7jkxl9Mjnfho172oLRE0ZS8Pwe8re/view?usp=sharing" class="mt-4 block text-center text-primary-blue hover:underline font-medium">Unduh Laporan Dampak Lengkap (PDF)</a>
+                    </div>
+
+                    <!-- Bukti 3: Video Tutorial/Wawancara -->
+                    <div class="md:col-span-2 border-2 border-dashed border-gray-300 p-5 rounded-xl bg-teal-50 shadow-md">
+                        <h3 class="text-2xl font-semibold text-teal-700 mb-3 flex items-center">
+                            <i data-lucide="youtube" class="w-6 h-6 mr-3"></i> Video Penerapan Pembelajaran STEM di SMPN 1 Patuk
+                        </h3>
+                        <div class="aspect-w-16 aspect-h-9 w-full rounded-lg overflow-hidden">
+                            <!-- Placeholder for an embedded YouTube video (Replace # with actual URL) -->
+                            <iframe class="w-full h-96" src="https://www.youtube.com/embed/<iframe width="560" height="315" src="https://www.youtube.com/embed/e1134YkPkVc?si=8oPA4iyRNCvRTF5C" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            <p class="text-center text-sm text-gray-500 mt-2">Ganti tanda '#' di kode dengan link embed YouTube video Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-primary-blue mt-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-white">
+            <p>&copy; 2024 Dwi Hastuti Listiyani, S.Si., M.Pd. | Portofolio Digital Guru</p>
+            <p class="text-sm mt-1 text-accent-teal">Unit Kerja: SMP Negeri 1 Patuk</p>
+        </div>
+    </footer>
+
+</body>
+</html>
